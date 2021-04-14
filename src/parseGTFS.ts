@@ -90,6 +90,12 @@ try {
 
     GTFStops.split("\n").forEach(s => {
         let stop = csvrow.parse(s);
+
+        if(stop[GTFS.Stop.zone_id].indexOf("IFF:") > -1){
+            stop[GTFS.Stop.stop_code] = stop[GTFS.Stop.zone_id].replace("IFF:", "S:");
+        } else {
+            stop[GTFS.Stop.stop_code] = "S:" + stop[GTFS.Stop.zone_id];
+        }
         pStops[stop[GTFS.Stop.stop_id]] = stop;
     });
 

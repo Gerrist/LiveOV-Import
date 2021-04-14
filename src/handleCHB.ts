@@ -33,7 +33,7 @@ async function main() {
 
                 stops.push({
                     stopArea: sp.stopplacecode,
-                    code: q.quaycode,
+                    code: "S:" + q.quaycode.split(":S:")[1],
                     name: q.quaynamedata.quayname,
                     platform: q.quaynamedata.stopsidecode ?? "",
                 });
