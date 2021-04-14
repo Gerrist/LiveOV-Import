@@ -22,7 +22,7 @@ split -l 100000 gtfs/stop_times.txt gtfs/stop_times_parts/stop_times_
 echo "[Export]      Parsing GTFS"
 node --max_old_space_size=8000 parseGTFS.js
 echo "[Export]      Inserting in DB"
-mongo liveov --eval 'db.calls.createIndex( { "trip": 1, "date": 1, "stop": 1, "departureTime": 1, "arrivalTime": 1,  } ); db.trips.createIndex( { "trip": 1, "date": 1 } ); db.stops.createIndex( { "stop": 1 } );'
+mongo liveov --eval 'db.calls.createIndex( { "trip": 1, "date": 1, "stop": 1, "departureTime": 1, "arrivalTime": 1,  } ); db.trips.createIndex( { "trip": 1, "date": 1 } ); db.stops.createIndex( { "stop": 1, "stopArea": 1} ); db.stopareas.createIndex( { "code": 1} );'
 mongoimport --db liveov --collection stopareas --type csv --headerline --file out/stop-areas.csv --upsert --upsertFields code
 mongoimport --db liveov --collection stops --type csv --headerline --file out/stops.csv --upsert --upsertFields stopArea,code
 mongoimport --db liveov --collection trips --type csv --headerline --file out/trips.csv --upsert --upsertFields trip,date
