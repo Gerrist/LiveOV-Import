@@ -203,7 +203,7 @@ try {
                                 let call = {
                                     trip: pTrips[stopTime[GTFS.StopTime.trip_id]][GTFS.Trip.realtime_trip_id],
                                     date: pCalendarDates[pTrips[stopTime[GTFS.StopTime.trip_id]][GTFS.Trip.service_id]],
-                                    stop: pStops[stopTime[GTFS.StopTime.stop_id]][GTFS.Stop.stop_code],
+                                    stop: "S:" + pStops[stopTime[GTFS.StopTime.stop_id]][GTFS.Stop.stop_code],
                                     departureTime: arrivalMoment.unix(),
                                     arrivalTime: departureMoment.unix(),
                                     platform: pStops[stopTime[GTFS.StopTime.stop_id]][GTFS.Stop.platform_code],
