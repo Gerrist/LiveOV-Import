@@ -4,8 +4,8 @@ tsc
 apt install unzip
 cd build
 [ -d out ] || mkdir out
-node downloadCHB.js --max_old_space_size=4000
-node handleCHB.js --max_old_space_size=4000
+node --max_old_space_size=8000 downloadCHB.js
+node --max_old_space_size=8000 handleCHB.js
 echo "[Export]      CSVing stop-areas.json"
 json2csv -i out/stop-areas.json -o out/stop-areas.csv
 echo "[Export]      CSVing stops.json"
@@ -18,7 +18,7 @@ echo "[Export]      Splitting GTFS"
 mkdir gtfs/stop_times_parts
 split -l 100000 gtfs/stop_times.txt gtfs/stop_times_parts/stop_times_
 echo "[Export]      Parsing GTFS"
-node parseGTFS.js --max_old_space_size=4000
+node --max_old_space_size=8000 parseGTFS.js
 echo "[Export]      Inserting in DB"
 mongoimport --db liveov --collection stopareas --type csv --file out/stop-areas.csv --upsert --upsertFields code
 mongoimport --db liveov --collection stops --type csv --file out/stops.csv --upsert --upsertFields stop
