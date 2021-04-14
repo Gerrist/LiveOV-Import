@@ -24,7 +24,7 @@ namespace GTFS {
     }
 
     export enum Stop {
-        stop_id, stop_code, stop_name, stop_lat, stop_lon, location_type, parent_station, stop_timezone, wheelchair_boarding, platform_code, zone_id
+        stop_id,stop_code,stop_name,stop_lat,stop_lon,location_type,parent_station,stop_timezone,wheelchair_boarding,platform_code,zone_id
     }
 
     export enum Route {
@@ -90,12 +90,16 @@ try {
 
     GTFStops.split("\n").forEach(s => {
         let stop = csvrow.parse(s);
-
-        if(stop[GTFS.Stop.zone_id].indexOf("IFF:") > -1){
-            stop[GTFS.Stop.stop_code] = stop[GTFS.Stop.zone_id].replace("IFF:", "S:");
-        } else {
-            stop[GTFS.Stop.stop_code] = "S:" + stop[GTFS.Stop.zone_id];
+        if(typeof stop[GTFS.Stop.zone_id] != 'undefined'){
+            if(stop[GTFS.Stop.zone_id] != ""){
+                if(stop[GTFS.Stop.zone_id].indexOf("IFF:") > -1){
+                    stop[GTFS.Stop.stop_code] = stop[GTFS.Stop.zone_id].replace("IFF:", "S:");
+                } else {
+                    stop[GTFS.Stop.stop_code] = "S:" + stop[GTFS.Stop.stop_code];
+                }
+            }
         }
+
         pStops[stop[GTFS.Stop.stop_id]] = stop;
     });
 
