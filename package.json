@@ -1,0 +1,24 @@
+{
+  "name": "LiveOV-Import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.14.37",
+    "basic-ftp": "^4.6.6",
+    "big-json": "^3.1.0",
+    "csvrow": "^1.0.0",
+    "gunzip-file": "^0.1.1",
+    "json2csv": "^5.0.6",
+    "moment-timezone": "^0.5.33",
+    "rd-to-wgs84": "^1.0.0",
+    "xml2js": "^0.4.23",
+    "zlib": "^1.0.5"
+  }
+}
