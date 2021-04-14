@@ -5,12 +5,15 @@ export function csvline(data: any){
             p = parseInt(p);
         }
 
-        let str = `"${p}"`;
+        let str = p;
         if(typeof p == 'boolean'){
             str = p.toString();
         }
         if(typeof p == 'number'){
             str = p.toString();
+        }
+        if(typeof p == 'string'){
+            str = str.split(",").join('!C!');
         }
 
         return str;
