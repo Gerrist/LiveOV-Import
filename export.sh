@@ -1,6 +1,6 @@
 #!/bin/bash
-tsc
 npm i
+tsc
 apt install unzip
 cd build
 [ -d out ] || mkdir out
