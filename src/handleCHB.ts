@@ -18,7 +18,8 @@ async function main() {
     let stops = [];
 
     for (const sp of stopplaces) {
-        let {lat, lon} = {lat: -1, lon: -1};
+        let lat = -1;
+        let lon = -1;
 
         if(typeof sp.quays.quay != 'undefined'){
             for (const q of sp.quays.quay) {
