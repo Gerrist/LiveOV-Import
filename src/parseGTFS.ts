@@ -80,7 +80,8 @@ try {
     let pServices = {};
 
     GTFSTrips.split("\n").forEach(s => {
-        let trip = s.split(',');
+        let trip = csvrow.parse(s).map(x => x.split(",").join("!C!"));
+
         pTrips[trip[GTFS.Trip.trip_id]] = trip;
         pTrips[pServices[GTFS.Trip.service_id]] = trip;
     });
@@ -177,6 +178,7 @@ try {
                                 }
 
                                 tTripCalls[tripKey]++;
+
 
                                 trips[tripKey] = {
                                     trip: pTrips[stopTime[GTFS.StopTime.trip_id]][GTFS.Trip.realtime_trip_id],
