@@ -4,8 +4,8 @@ npm i
 apt install unzip
 cd build
 [ -d out ] || mkdir out
-node downloadCHB.js
-node handleCHB.js
+node downloadCHB.js --max_old_space_size=4000
+node handleCHB.js --max_old_space_size=4000
 echo "[Export]      CSVing stop-areas.json"
 json2csv -i out/stop-areas.json -o out/stop-areas.csv
 echo "[Export]      CSVing stops.json"
