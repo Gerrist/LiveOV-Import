@@ -39,20 +39,23 @@ async function main() {
             }
         }
 
+        console.log(sp);
+
         stopareas.push({
             code: sp.stopplacecode,
             name: sp.stopplacename.publicname,
             town: sp.stopplacename.town ?? "",
             street: sp.stopplacename.street ?? "",
             lat,
-            lon
+            lon,
+            type: sp.stopplacetype ?? "unknown"
         });
     }
 
-    console.log(prefix + "Writing stop-areas.json");
-    fs.writeFileSync(__dirname + '/out/stop-areas.json', JSON.stringify(stopareas));
-    console.log(prefix + "Writing stops.csv");
-    fs.writeFileSync(__dirname + '/out/stops.json', JSON.stringify(stops));
+    // console.log(prefix + "Writing stop-areas.json");
+    // fs.writeFileSync(__dirname + '/out/stop-areas.json', JSON.stringify(stopareas));
+    // console.log(prefix + "Writing stops.csv");
+    // fs.writeFileSync(__dirname + '/out/stops.json', JSON.stringify(stops));
 
     // console.log(passengerStopAssignmentExportCHBJSON.places.place);
 }
